@@ -1,0 +1,22 @@
+{
+  "name": "@wangcch/format-currency",
+  "version": "0.0.1",
+  "description": "Help you with currency formatter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wangcch/format-currency.git"
+  },
+  "keywords": [
+    "format",
+    "currency",
+    "format-currency",
+    "currency-formatter",
+    "money"
+  ],
+  "author": "Demon Wang <wangcch.cc@gamil.com>",
+  "license": "MIT"
+}
