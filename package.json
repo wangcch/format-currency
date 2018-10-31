@@ -4,7 +4,7 @@
   "description": "Help you with currency formatter",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "ava"
   },
   "repository": {
     "type": "git",
@@ -18,5 +18,8 @@
     "money"
   ],
   "author": "Demon Wang <wangcch.cc@gamil.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.25.0"
+  }
 }
