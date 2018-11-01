@@ -19,7 +19,11 @@ test("format-decimal", t => {
 test("format-typeErr", t => {
   t.is(formatCurrency(""), NaN);
   t.is(formatCurrency({}), NaN);
-  // t.is(formatCurrency("abc"), NaN);
+  t.is(formatCurrency("abc"), NaN);
+  t.is(formatCurrency("1."), NaN);
+  t.is(formatCurrency("1."), NaN);
+  t.is(formatCurrency(".1"), NaN);
+  t.is(formatCurrency("1.1.1"), NaN);
 })
 
 test("parse-integer", t => {

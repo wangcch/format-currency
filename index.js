@@ -18,7 +18,6 @@ const formatCurrency = (value, options) => {
     // TODO
     return formatAddComma(currency, segmentDigit);
   } else {
-    throw new TypeError("type error");
     return NaN;
   }
 };
@@ -42,8 +41,8 @@ const isNumber = value => {
 
 const isCurrencyString = value => {
   if (typeof value === STRING && value.length > 0) {
-    // TODO
-    return true;
+    const reg = /^(\+|\-)?\d+(\.\d+)?$/;
+    return reg.test(value);
   } else {
     return false;
   }
