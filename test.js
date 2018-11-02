@@ -24,7 +24,7 @@ test("format-decimal-digit", t => {
   t.is(formatCurrency("123.5", { decimalDigit: 0 }), "124");
   t.is(formatCurrency("123", { decimalDigit: 5 }), "123.00000");
   t.is(formatCurrency("123.123456", { decimalDigit: 5 }), "123.12346");
-})
+});
 
 test("format-segment", t => {
   t.is(formatCurrency("123456", { isSegment: false }), "123456.00");
@@ -39,7 +39,10 @@ test("format-typeErr", t => {
   t.is(formatCurrency("1."), NaN);
   t.is(formatCurrency("1."), NaN);
   t.is(formatCurrency(".1"), NaN);
-  t.is(formatCurrency("1.1.1"), NaN);
+  t.is(formatCurrency("1.2.3"), NaN);
+  t.is(formatCurrency(Infinity), NaN);
+  t.is(formatCurrency(null), NaN);
+  t.is(formatCurrency(undefined), NaN);
 });
 
 test("parse-integer", t => {
@@ -48,4 +51,19 @@ test("parse-integer", t => {
   t.is(parseCurrency("1,234,567"), 1234567);
   t.is(parseCurrency("-123"), -123);
   t.is(parseCurrency("+123"), +123);
+  t.is(parseCurrency("123.00"), 123.00);
+  t.is(parseCurrency("12,345.00"), 12345.00);
+});
+
+test("parse-typeErr", t => {
+  t.is(parseCurrency(""), NaN);
+  t.is(parseCurrency({}), NaN);
+  t.is(parseCurrency("abc"), NaN);
+  t.is(parseCurrency("1."), NaN);
+  t.is(parseCurrency("1."), NaN);
+  t.is(parseCurrency(".1"), NaN);
+  t.is(parseCurrency("1.2.3"), NaN);
+  t.is(parseCurrency(Infinity), NaN);
+  t.is(parseCurrency(null), NaN);
+  t.is(parseCurrency(undefined), NaN);
 });
