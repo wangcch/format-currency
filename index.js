@@ -16,7 +16,9 @@ const formatCurrency = (value, options) => {
   const currency = isNumber(value) ? value.toString() : value;
   if (isCurrencyString(currency)) {
     const fixedCurrency = formatDecimal(currency, decimalDigit);
-    return isSegment ? formatAddComma(fixedCurrency, segmentDigit) : fixedCurrency;
+    return isSegment
+      ? formatAddComma(fixedCurrency, segmentDigit)
+      : fixedCurrency;
   } else {
     return NaN;
   }
@@ -27,8 +29,10 @@ const parseCurrency = currency => {
 };
 
 const formatAddComma = (string, segmentDigit) => {
-  const reg = new RegExp(`\\B(?=(\\d{${segmentDigit}})+(?!\\d))(\.\d)?`, "g");
-  return string.replace(reg, ",");
+  const arr = string.split(".");
+  const reg = new RegExp(`\\B(?=(\\d{${segmentDigit}})+(?!\\d))`, "g");
+  const integer = arr[0].replace(reg, ",");
+  return arr.length == 2 ? integer.concat(".", arr[1]) : integer;
 };
 
 const formatDecimal = (value, digits) => {
