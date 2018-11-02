@@ -19,7 +19,11 @@ test("format-decimal", t => {
 
 test("format-decimal-digit", t => {
   t.is(formatCurrency("123.00", { decimalDigit: 0 }), "123");
+  t.is(formatCurrency("0.00000", { decimalDigit: 0 }), "0");
+  t.is(formatCurrency("123.00000", { decimalDigit: 0 }), "123");
   t.is(formatCurrency("123.5", { decimalDigit: 0 }), "124");
+  t.is(formatCurrency("123", { decimalDigit: 5 }), "123.00000");
+  t.is(formatCurrency("123.123456", { decimalDigit: 5 }), "123.12346");
 })
 
 test("format-segment", t => {
