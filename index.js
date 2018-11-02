@@ -25,7 +25,13 @@ const formatCurrency = (value, options) => {
 };
 
 const parseCurrency = currency => {
-  return parseInt(currency.replace(/\$\s?|(,*)/g, ""), 10);
+  if (isNumber(currency)) {
+    return currency;
+  } else if (isCurrencyFormatString(currency)) {
+    return parseInt(currency.replace(/\$\s?|(,*)/g, ""), 10);
+  } else {
+    return NaN;
+  }
 };
 
 const formatAddComma = (string, segmentDigit) => {
@@ -40,7 +46,7 @@ const formatDecimal = (value, digits) => {
 };
 
 const isNumber = value => {
-  if (!isNaN(value) && typeof value === NUMBER) {
+  if (typeof value === NUMBER && !isNaN(value) && isFinite(value)) {
     return true;
   } else {
     return false;
@@ -50,6 +56,15 @@ const isNumber = value => {
 const isCurrencyString = value => {
   if (typeof value === STRING && value.length > 0) {
     const reg = /^(\+|\-)?\d+(\.\d+)?$/;
+    return reg.test(value);
+  } else {
+    return false;
+  }
+};
+
+const isCurrencyFormatString = value => {
+  if (typeof value === STRING && value.length > 0) {
+    const reg = /^(\+|\-)?\d+((\,\d+)+)?(\.\d+)?$/;
     return reg.test(value);
   } else {
     return false;
