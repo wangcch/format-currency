@@ -1,5 +1,5 @@
 import test from "ava";
-import { formatCurrency, parseCurrency } from "./index.js";
+import { formatCurrency, parseCurrency } from "./lib/index.js";
 
 test("format-integer", t => {
   t.is(formatCurrency("123"), "123.00");
