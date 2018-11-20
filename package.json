@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint ./lib/*.js",
     "format": "prettier-eslint --write ./lib/*.js ./src/*.js",
-    "build": "babel src --presets babel-preset-es2015 --out-dir lib",
+    "build": "babel src --presets babel-preset-es2015 --out-dir lib && npm run format",
     "test": "ava"
   },
   "repository": {
