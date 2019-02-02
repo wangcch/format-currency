@@ -71,4 +71,5 @@ const isCurrencyFormatString = value => {
   }
 };
 
-module.exports = { formatCurrency, parseCurrency };
+export { formatCurrency, parseCurrency };
+export default formatCurrency;

@@ -1,5 +1,5 @@
 import test from "ava";
-import { formatCurrency, parseCurrency } from "./index.js";
+import { formatCurrency, parseCurrency } from "./lib/index.js";
 
 test("format-integer", t => {
   t.is(formatCurrency("123"), "123.00");
@@ -29,7 +29,10 @@ test("format-decimal-digit", t => {
 test("format-segment", t => {
   t.is(formatCurrency("123456", { isSegment: false }), "123456.00");
   t.is(formatCurrency("123456", { segmentDigit: 4 }), "12,3456.00");
-  t.is(formatCurrency("123456", { isSegment: false, segmentDigit: 4 }), "123456.00");
+  t.is(
+    formatCurrency("123456", { isSegment: false, segmentDigit: 4 }),
+    "123456.00"
+  );
 });
 
 test("format-typeErr", t => {
@@ -51,8 +54,8 @@ test("parse-integer", t => {
   t.is(parseCurrency("1,234,567"), 1234567);
   t.is(parseCurrency("-123"), -123);
   t.is(parseCurrency("+123"), +123);
-  t.is(parseCurrency("123.00"), 123.00);
-  t.is(parseCurrency("12,345.00"), 12345.00);
+  t.is(parseCurrency("123.00"), 123.0);
+  t.is(parseCurrency("12,345.00"), 12345.0);
 });
 
 test("parse-typeErr", t => {
