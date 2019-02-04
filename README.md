@@ -3,6 +3,8 @@
 Help you with currency formatter
 
 [![Build Status](https://travis-ci.org/wangcch/format-currency.svg?branch=master)](https://travis-ci.org/wangcch/format-currency)
+![](https://img.shields.io/npm/v/@wangcch/format-currency.svg)
+![](https://img.shields.io/npm/l/@wangcch/format-currency.svg)
 
 ## Install
 
